@@ -2,25 +2,35 @@
 
 > An interactive command-line quiz game for learning JavaScript and programming concepts.
 
-quiz-cli helps developers and students test their knowledge of JavaScript, Node.js, and general programming through a fully interactive terminal experience. It provides immediate feedback on every answer, detailed explanations, and a performance summary at the end of each session — all without requiring a single external dependency.
+![Node.js](https://img.shields.io/badge/Node.js-%3E%3D18.0.0-339933?logo=node.js&logoColor=white)
+![JavaScript](https://img.shields.io/badge/JavaScript-ES2022-F7DF1E?logo=javascript&logoColor=black)
+![License](https://img.shields.io/badge/License-MIT-blue.svg)
+![Dependencies](https://img.shields.io/badge/Dependencies-None-brightgreen)
 
-**Key Features:**
+quiz-cli is a zero-dependency, fully interactive terminal quiz application built with Node.js. It helps developers and students reinforce their knowledge of JavaScript, Node.js, and general programming concepts directly from the command line — no browser, no frameworks, no installs beyond Node itself.
 
-- ✓ Three quiz categories: JavaScript Basics, Node.js Fundamentals, and General Programming
-- ✓ 15 questions across categories with randomized order using the Fisher-Yates shuffle algorithm
-- ✓ Flexible question count per session — choose all questions, 3, or 5
-- ✓ Immediate answer validation with per-question explanations
-- ✓ Visual progress bar rendered in the terminal during the quiz
-- ✓ Final score summary with performance-based messages and a review of incorrect answers
-- ✓ Fully colorized terminal output using pure ANSI escape codes — no external packages
-- ✓ Play-again loop so you can practice multiple categories in one session
+The app challenges you with multiple-choice questions, gives immediate per-answer feedback with explanations, tracks your score with a visual progress bar, and presents a detailed results summary at the end of every session.
 
-**Technology Stack:**
+### Key Features
 
-- Language: JavaScript (ES2022)
-- Runtime: Node.js ≥ 18.0.0
-- Module system: ES Modules (`import`/`export`)
-- Dependencies: None — uses only Node.js built-in modules (`node:fs/promises`, `node:readline`, `node:url`, `node:path`)
+- ✓ **Three quiz categories** — JavaScript Basics, Node.js Fundamentals, and General Programming
+- ✓ **15 curated questions** with randomized order via the Fisher-Yates shuffle algorithm
+- ✓ **Flexible session length** — choose all questions, 3, or 5 per round
+- ✓ **Instant answer feedback** with per-question explanations after every response
+- ✓ **Visual progress bar** rendered live in the terminal as you advance
+- ✓ **Score summary** with performance-tier messages (🏆 Perfect → 💪 Keep practicing)
+- ✓ **Incorrect answer review** — missed questions are listed with correct answers at the end
+- ✓ **Colorized terminal output** using pure ANSI escape codes — no external packages
+- ✓ **Play-again loop** to practice multiple categories in a single session
+
+### Technology Stack
+
+| Layer          | Technology                                                        |
+|----------------|-------------------------------------------------------------------|
+| Language       | JavaScript (ES2022)                                               |
+| Runtime        | Node.js ≥ 18.0.0                                                  |
+| Module System  | ES Modules (`import` / `export`)                                  |
+| Dependencies   | None — only Node.js built-ins (`fs`, `readline`, `url`, `path`)   |
 
 ---
 
@@ -28,22 +38,22 @@ quiz-cli helps developers and students test their knowledge of JavaScript, Node.
 
 ### Prerequisites
 
-You need Node.js version 18.0.0 or higher installed on your machine. No other tools are required.
+You need Node.js 18.0.0 or higher installed on your machine. No other tools or package installations are required.
 
-| Tool    | Minimum Version | Verify with          |
-|---------|-----------------|----------------------|
-| Node.js | 18.0.0          | `node --version`     |
-| npm     | 8.0.0           | `npm --version`      |
+| Tool    | Minimum Version | Verify with      |
+|---------|-----------------|------------------|
+| Node.js | 18.0.0          | `node --version` |
+| npm     | 8.0.0           | `npm --version`  |
 
 ```bash
 node --version
-# Expected output: v18.x.x or higher
+# Expected: v18.x.x or higher
 
 npm --version
-# Expected output: 8.x.x or higher
+# Expected: 8.x.x or higher
 ```
 
-✅ **Verify:** Both commands return version numbers matching the requirements above before proceeding.
+✅ **Verify:** Both commands return version numbers that satisfy the requirements above.
 
 ---
 
@@ -51,50 +61,42 @@ npm --version
 
 1. **Clone the repository**
 
-```bash
-git clone https://github.com/aidmax/test-app.git
-cd test-app
-```
+   ```bash
+   git clone https://github.com/aidmax/test-app.git
+   cd test-app
+   ```
 
-✅ **Verify:** You are inside the `test-app` directory and can see `index.js` and `package.json`.
+   ✅ **Verify:** You are inside the `test-app` directory and can see `index.js`, `package.json`, and the `src/` and `data/` directories.
 
-```bash
-ls
-# Expected output: data  index.js  package.json  src
-```
+   ```bash
+   ls
+   # Expected: data  index.js  package.json  src
+   ```
 
-2. **Confirm no dependencies need to be installed**
+2. **Confirm there are no dependencies to install**
 
-This project uses only Node.js built-in modules. There is no `node_modules` directory to install.
+   This project uses only Node.js built-in modules. There is no `node_modules` folder and nothing to install.
 
-```bash
-cat package.json | grep dependencies
-# Expected output: (no output — the project has zero external dependencies)
-```
+   ```bash
+   cat package.json
+   # Expected: no "dependencies" or "devDependencies" keys in the output
+   ```
 
-✅ **Verify:** The project is ready to run immediately after cloning.
-
-3. **Run the tests**
-
-```bash
-npm test
-```
-
-✅ **Verify:** The test runner completes without errors.
+   ✅ **Verify:** The project is ready to run immediately after cloning — no `npm install` needed.
 
 ---
 
 ## How to Run the Project
 
-### Development / Standard Mode
+### Standard Mode
 
-Start the quiz application using the `start` script defined in `package.json`:
+Start the application using the `start` script defined in `package.json`:
 
 ```bash
 npm start
 ```
 
-This executes `node index.js`. The terminal will clear and display the welcome banner:
+This runs `node index.js`. The terminal clears and displays the welcome banner:
 
 ```
   ╔═══════════════════════════════════════════╗
@@ -105,21 +107,23 @@ This executes `node index.js`. The terminal will clear and display the welcome b
   ╚═══════════════════════════════════════════╝
 ```
 
-You can also run the application directly with Node.js:
+You can also invoke the entry point directly:
 
 ```bash
 node index.js
 ```
 
-> **Note:** There is no Docker configuration in this project. No `Dockerfile` or `docker-compose.yml` is present.
+Both commands produce identical results. Visit your terminal — no browser or port is involved.
+
+> **Note:** This project does not include a `Dockerfile` or `docker-compose.yml`. Docker is not required or supported.
 
 ---
 
 ## Usage Examples
 
-### Example 1 — Selecting a Category and Answering a Question
+### Example 1 — Choosing a Category and Session Length
 
-When the application starts, you are presented with a numbered category menu. Enter the number corresponding to your choice and press **Enter**.
+After the banner, you select a quiz category by entering its number and pressing **Enter**:
 
 ```
 Choose a category:
@@ -131,7 +135,7 @@ Choose a category:
 Your choice (enter number): 1
 ```
 
-You are then asked how many questions you want:
+Next, choose how many questions to answer:
 
 ```
 How many questions?
@@ -143,11 +147,15 @@ How many questions?
 Your choice (enter number): 2
 ```
 
-Each question is displayed with a progress bar and numbered answer options:
+---
+
+### Example 2 — Answering Questions with Live Feedback
+
+Each question displays a progress bar, a question counter, and four numbered options:
 
 ```
-[██████░░░░░░░░░░░░░░░░░░░░░░░░] 20%
-Question 2 of 3
+[██████░░░░░░░░░░░░░░░░░░░░░░░░] 33%
+Question 1 of 3
 
 What does '===' check for?
 
@@ -162,11 +170,7 @@ Your choice (enter number): 3
 💡 The strict equality operator (===) checks both value and type without coercion.
 ```
 
----
-
-### Example 2 — Incorrect Answer with Feedback
-
-If you select a wrong answer, the CLI immediately shows the correct option and the explanation:
+If you select a wrong answer, the CLI immediately reveals the correct option:
 
 ```
 Your choice (enter number): 1
@@ -178,9 +182,9 @@ The correct answer was: Value and type
 
 ---
 
-### Example 3 — Final Results and Review
+### Example 3 — Results Summary and Incorrect Answer Review
 
-After all questions are answered, the quiz displays your score, a performance message, and a review of any questions you answered incorrectly:
+After all questions are answered, quiz-cli displays your score, a performance message, and a full review of any questions you got wrong:
 
 ```
 ══════════════════════════════════════════════════
@@ -201,13 +205,23 @@ After all questions are answered, the quiz displays your score, a performance me
    Correct:      'object'
 ```
 
-At the end of each session you are asked:
+Performance tiers are determined by your percentage score:
+
+| Score     | Emoji | Message                          |
+|-----------|-------|----------------------------------|
+| 100%      | 🏆    | Perfect score! Amazing!          |
+| 80–99%    | 🌟    | Great job! Well done!            |
+| 60–79%    | 👍    | Good effort! Keep learning!      |
+| 40–59%    | 📚    | Not bad! Room for improvement.   |
+| 0–39%     | 💪    | Keep practicing! You'll get better! |
+
+At the end of each round you are asked:
 
 ```
 Would you like to play again? (y/n):
 ```
 
-Enter `y` to return to the category menu or `n` to exit.
+Enter `y` to return to the category menu or `n` to exit gracefully.
 
 ---
 
@@ -216,59 +230,76 @@ Enter `y` to return to the category menu or `n` to exit.
 ```
 test-app/
 │
-├── index.js                  # Main entry point — orchestrates game flow, loads questions,
-│                             #   displays the welcome banner, and manages the play-again loop
+├── index.js                 # Entry point — banner, category selection, session loop,
+│                            #   question iteration, play-again prompt, error handling
 │
-├── package.json              # Project manifest — name, version, scripts, engine requirements
+├── package.json             # Project manifest — name, version, scripts (start, test),
+│                            #   engine constraint (Node.js ≥ 18), MIT license declaration
 │
-├── src/                      # Application source modules
-│   ├── colors.js             # ANSI terminal color utilities — colorize(), red(), green(),
-│   │                         #   success(), error(), highlight(), and more
-│   ├── input.js              # User input layer — Promise-based wrappers around Node.js
-│   │                         #   readline: prompt(), select(), confirm(), pressEnter()
-│   └── quiz.js               # Core quiz engine — Quiz class with question shuffling,
-│                             #   answer tracking, progress bar rendering, and results display
+├── src/                     # Core application modules
+│   │
+│   ├── quiz.js              # Quiz class — Fisher-Yates shuffle, askQuestion(),
+│   │                        #   renderProgressBar(), showResults(), score tracking,
+│   │                        #   isComplete / progress / currentQuestion getters
+│   │
+│   ├── input.js             # I/O utilities — Promise-wrapped readline: prompt(),
+│   │                        #   select() (numbered menu), confirm() (y/n), pressEnter()
+│   │
+│   └── colors.js            # ANSI color helpers — colorize(), red(), green(), cyan(),
+│                            #   bold(), dim(), success(), error(), warning(), highlight()
 │
 └── data/
-    └── questions.json        # Quiz content database — 15 questions across 3 categories
-                              #   (JavaScript Basics, Node.js Fundamentals, General Programming)
+    └── questions.json       # Static question bank — 15 questions in 3 categories:
+                             #   javascript, nodejs, general (each with options,
+                             #   zero-based answer index, and explanation string)
 ```
 
 **Logical Layers:**
 
-| Layer           | Files                  | Responsibility                                      |
-|-----------------|------------------------|-----------------------------------------------------|
-| Entry / Control | `index.js`             | Application bootstrap, game loop, error handling    |
-| Game Logic      | `src/quiz.js`          | Quiz class, scoring, shuffling, results rendering   |
-| I/O             | `src/input.js`         | All user input via Promise-wrapped readline         |
-| Presentation    | `src/colors.js`        | ANSI styling utilities for terminal output          |
-| Data            | `data/questions.json`  | Static question bank organized by category          |
+| Layer           | File(s)                | Responsibility                                           |
+|-----------------|------------------------|----------------------------------------------------------|
+| Entry / Control | `index.js`             | App bootstrap, game loop, file loading, error handling   |
+| Game Logic      | `src/quiz.js`          | Quiz class, answer scoring, shuffle, results rendering   |
+| I/O             | `src/input.js`         | All user input via Promise-wrapped Node.js readline      |
+| Presentation    | `src/colors.js`        | Zero-dependency ANSI terminal styling utilities          |
+| Data            | `data/questions.json`  | Static question bank organized by category               |
 
 ---
 
 ## Contributing
 
-Contributions are welcome! Follow these steps to propose a change:
+Contributions are welcome! To propose a change, follow this workflow:
 
-1. **Fork** the repository on GitHub
+1. **Fork** the repository on GitHub.
 2. **Create a feature branch** from `main`:
    ```bash
    git checkout -b feature/your-feature-name
    ```
-3. **Commit** your changes with a clear message:
+3. **Make your changes** and commit them with a descriptive message:
    ```bash
-   git commit -m "feat: add new quiz category for TypeScript"
+   git commit -m "feat: add TypeScript quiz category"
    ```
-4. **Push** the branch to your fork:
+4. **Push** your branch to your fork:
    ```bash
    git push origin feature/your-feature-name
    ```
-5. **Open a Pull Request** against the `main` branch and describe what you changed and why.
+5. **Open a Pull Request** against the `main` branch. Describe what you changed, why, and include any relevant context or screenshots.
 
-When adding new questions, follow the existing schema in `data/questions.json` — each question requires a `question` string, an `options` array of four strings, a zero-based `answer` index, and an `explanation` string.
+**Adding new questions:** Follow the existing schema in `data/questions.json`. Each question object requires:
+
+```json
+{
+  "question": "Your question text here?",
+  "options": ["Option A", "Option B", "Option C", "Option D"],
+  "answer": 0,
+  "explanation": "Why the correct answer is correct."
+}
+```
+
+The `answer` field is a **zero-based index** into the `options` array.
 
 ---
 
 ## License
 
-This project is licensed under the **MIT License**.
+This project is licensed under the **MIT License**. See the [LICENSE](LICENSE) file for details.
